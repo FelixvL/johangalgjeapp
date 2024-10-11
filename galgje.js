@@ -6,6 +6,16 @@ console.log(pressed);
     
 // }
 
+function wordGeneration() {
+    let gameWord = "secret"
+    console.log(gameWord)
+    let wordLength = gameWord.length;
+    console.log(wordLength)
+}
+
+wordGeneration()
+gameDisplay()
+
 // global
 let usedLetters = [];
 
@@ -21,30 +31,41 @@ function gameInput() {
         // else if (input == ) {
         //     alert("Only one letter or a word");
         // }
-        // else if (input != alphanumeric) {
-        //     alert("Only alphabetic letters");;
-        // }
-        // else
+        else if (isLetter(input) == false) {
+            alert("Only letters from the alfabet");
+        }
+        // else if
         // alert("This is not the correct word")
+        else {
+            wordArray();
+        }
     document.getElementById("inputHangman").value = ''; //Maak tekstvak leeg na input.
-    wordArray();
+    gameDisplay()
+    
 }
 
-function wordArray() {
-    let gameWord = "secret"
-    let wordLength = gameWord.length;
+gameDisplay()
+
+function isLetter(input) {  // Checkt of het wel een letter is.
+    return input.toLowerCase() != input.toUpperCase();
+  }
+
+function wordArray() {   
     let addLetters = usedLetters.unshift(input);
     console.log(usedLetters);
     document.getElementById("usedLetterDisplay").innerHTML = usedLetters
 }
 
 // Display om te tonen op het scherm
-function gameDisplay() {
-
+function gameDisplay(wordLength, gameWord) {
+    let letterGuesses = 0
+    let wordGuesses = 0
+    let blankLetters = wordLength * "_"
+    // console.log(blankLetters)
 }
 
-function gameMain() {
-    inputCheck
+function gameMain(gameWord) {
+    
 }
 
 function restartGame() {
