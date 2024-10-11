@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+    </head>
+    <body>
+        <script>
+            let x = 0;
+            function slaIetsVoorLangereTijdOp() {
+                x++;
+                console.log("hoi");
+                localStorage.setItem("mijnsleutel", x);
+                document.getElementById("xweergever").innerHTML = x;
+            }
+            function ophalenDieHandel() {
+                console.log("doei");
+                x = localStorage.getItem("mijnsleutel").innerHTML =
+                    " Nummer is opgehaald";
+            }
+        </script>
+
+        <button onclick="slaIetsVoorLangereTijdOp()">Sla op</button>
+
+        <br /><br /><br />
+
+        <button onclick="ophalenDieHandel()">Haal op.</button>
+
+        <br /><br /><br />
+
+        <div id="xweergever"></div>
+    </body>
+</html>
