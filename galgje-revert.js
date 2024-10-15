@@ -17,10 +17,10 @@ function getRandomWord(woordlijst) { // ??? Werkt dit zo dat je bij de .then....
     document.getElementById("secretWord").innerHTML = randomWord;
     wordToGuess = randomWord;
     lettersGuessed = new Int32Array(wordToGuess.length);    //A Typed Array (not an actual Array) for storing binary data in memory.
-    emptyWordDisplay();
+    toonUnderscores();
 }
 
-function emptyWordDisplay() {
+function toonUnderscores() {
     let eindString = "";
     for (let x = 0; x < wordToGuess.length; x++) {
         if (lettersGuessed[x] == 1) {
@@ -33,46 +33,46 @@ function emptyWordDisplay() {
 }
 
 function letterInputOnScreen() {
-    let letterInput = document.getElementById("inputHangman").value;
-    for (let x = 0; x < wordToGuess.length; x++) {
+    let letterInput = document.getElementById("invoerletter").value;
+    for (let x = 0; x < hetteradenwoord.length; x++) {
         if (wordToGuess[x] == letterInput) {
             lettersGuessed[x] = 1;
         }
     }
-    emptyWordDisplay();
-    document.getElementById("inputHangman").value = "";
+    toonUnderscores();
+    document.getElementById("invoerletter").value = "";
 }
 
 function gameInput() {
     let wordLength = wordToGuess.length;
     console.log(wordLength)
     input = document.getElementById("inputHangman").value;
-    if (usedLetters.includes(input)) {
+    if (usedLetters.includes(input)) { //LETTER ALREADY USED?
         alert("You have already used this letter.");
     }
-    else if (input == wordToGuess) {
+    else if (input == wordToGuess) { //IS WORD GUESSED?
         alert("Congratulations, you have guessed the word!")
         restartGame();
     }
-    else if (input == '') {
+    else if (input == '') { //NO EMPTY INPUT
         alert("You did not chose a letter or word.");
     }
-    else if (isLetter(input) == false) {
+    else if (isLetter(input) == false) { //ALFABET OR NOT?
         alert("Only letters from the alfabet.");
     }
     else if (input.charAt(0) === input.charAt(1) && input.charAt(1) === input.charAt(2)) {
-        alert("This is not a word.");
+        alert("This is not a word."); //IS IT A WORD?
     }
-    else if (input.length == wordLength) {
+    else if (input.length == wordLength) { //GUESS IS WRONG
         alert("Nice try, but that is not the secret word.");
     }
-    else if (input.length >= wordLength) {
+    else if (input.length >= wordLength) { //WORD TOO LONG
         alert("That word is too long.")
     }
     else if (input.length >= 3 && input.length !== wordLength) {
-        alert("That word is too short.")
+        alert("That word is too short.") //WORD TOO SHORT
     }
-    else if (input.length >= 2) {
+    else if (input.length >= 2) { //TOO MUCH INPUT
         alert("Only one letter or a word.");
     }
     else {

@@ -4,43 +4,18 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Galgje</title>
-        <link rel="galgje.css" href="galgje.css">
-        <script src="wordlist.js"></script>
-        <script src="woordlijst.js"></script>
+        <link rel="stylesheet" href="galgje.css">
         <script src="galgje.js" /></script>
     </head>
-    <body>
         <h1>Galgje</h1>
-        
-        <h2></h2>
+                
+        <div><button onclick="wordFetch()">Klik om een nieuw woord te genereren!</button></div>
+        <br><br><br>
+    <div><input id="inputHangman" type="input" placeholder="Guess a letter or the full word." size="21"><button onclick="gameInput()">Guess</button></div>
 
-        <p class="project-description">
-            Dit project is tot stand gekomen na een introductie voor front-end
-            waarin er met Python een Galgje spel geprogrammeerd moest worden.
-            Het leek mij na het beginnen met front-end een leuke uitdaging
-            dit om te zetten via Javascript naar een 'online' versie met wat
-            meer grafische vormgeving wat extra toevoegingen.
-        </p>
-
-        <h2>Eisen</h2>
-
-        <h2>Originele Python Source Code</h2>
-        <h2>Javascript Source Code</h2>
-        
-        <h4>->Hangman Animation<-</h4><div id="HangmanStageDisplay"></div>
-        
-        <h4>Guessed Letters: </h4><div id="usedLetterDisplay"></div>
-        
-        <h4>Correct Letters: </h4><div id="correctLetterDisplay"></div>
-        
-        <h4></h4><div id="rightOrWrongDisplay"></div>
-        
-        <h4>Feedback: </h4><div id="currentStepDisplay"></div>
-
-        <h4>Word: </h4><div id="secretWord"></div>
-        
-        <button onclick="gameStart()">Start or Restart the Game</button><br>
-        <input id="inputHangman" type="input" placeholder="Guess a letter or the full word." size="21"><button onclick="gameInput()">Guess</button>
+        <div><h4>Guessed Letters: </h4><section id="usedLetterDisplay"></section></div>
+        <div><h4>Woord voor het testen: </h4><section id="secretWord"></section></div>
+        <div><h4>Raad het woord: </h4><section id="wordDisplay"></section></div>
         
     </body>
 </html>
