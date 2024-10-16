@@ -9,13 +9,15 @@
     </head>
         <h1>Galgje</h1>
                 
-        <div><button onclick="wordFetch()">Genereer Woord !</button></div>
-        <br><br><br>
-    <div><input id="inputHangman" type="input" placeholder="Guess a letter or the full word." size="21"><button onclick="gameInput()">Guess</button></div>
-
         <div><h4>Gebruikte letters: </h4><section id="usedLetterDisplay"></section></div>
         <div><h4>Testwoord: </h4><section id="secretWord"></section></div>
         <div><h4>Te raden woord: </h4><section id="wordDisplay"></section></div>
-        <div><section id="restartGame"></section></div>
+        <div><section id="gameStatus"></section></div>
+        <br>
+        <div><input id="inputHangman" type="input" autocomplete="off" placeholder="Guess a letter or the full word." size="21">
+        <br>
+        <button onclick="gameInput()">Guess</button></div>
+        <br>
+        <div><button onclick="wordFetch()">Maak een nieuw woord !</button></div>
     </body>
 </html>
