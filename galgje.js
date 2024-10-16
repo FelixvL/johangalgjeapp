@@ -5,7 +5,7 @@ let usedLetters = [];
 let wordToGuess;
 
 function wordFetch() {
-    fetch("woordlijst.txt")
+    fetch("Woordlijst.txt") //Ony the file itself has a capital letter.
         .then(response => response.text())
         .then(data => getRandomWord(data))
         .catch(error => console.error('Error loading word list:', error));
@@ -45,7 +45,6 @@ function letterInputOnScreen() {
 
 function gameInput() {
     let wordLength = wordToGuess.length;
-    console.log(wordLength)
     input = document.getElementById("inputHangman").value;
     if (usedLetters.includes(input)) {
         alert("You have already used this letter.");
@@ -82,7 +81,7 @@ function gameInput() {
     letterInputOnScreen()
 }
 
-function isLetter(input) {  // Checkt of het wel een letter is.
+function isLetter(input) {
     return input.toLowerCase() != input.toUpperCase();
 }
 
@@ -90,4 +89,8 @@ function usedLettersArray() {
     let addLetters = usedLetters.unshift(input);
     console.log(usedLetters);
     document.getElementById("usedLetterDisplay").innerHTML = usedLetters;
+}
+
+function restartGame() {
+    document.getElementById("restartGame").innerHTML = "Je hebt gewonnen. Klik op genereer woord om opnieuw te starten !";
 }
