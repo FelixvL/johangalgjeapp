@@ -1,11 +1,10 @@
-
-
 // global variables
 let usedLetters = [];
 let wordToGuess;
+let lettersCorrect;
 
 function wordFetch() {
-    fetch("Woordlijst.txt") //Ony the file itself has a capital letter.
+    fetch("Woordlijst.txt")
         .then(response => response.text())
         .then(data => getRandomWord(data))
         .catch(error => console.error('Error loading word list:', error));
@@ -47,35 +46,27 @@ function gameInput() {
     let wordLength = wordToGuess.length;
     input = document.getElementById("inputHangman").value;
     if (usedLetters.includes(input)) {
-        alert("You have already used this letter.");
-    }
-    else if (input == wordToGuess) {
-        alert("Congratulations, you have guessed the word!")
+        document.getElementById("gameStatus").innerHTML = "Deze letter is al gebruikt.";
+    } else if (input == wordToGuess) {
+        document.getElementById("gameStatus").innerHTML = "Gefeliciteerd, je hebt het woord geraden!";
         restartGame();
-    }
-    else if (input == '') {
-        alert("You did not chose a letter or word.");
-    }
-    else if (isLetter(input) == false) {
-        alert("Only letters from the alfabet.");
-    }
-    else if (input.charAt(0) === input.charAt(1) && input.charAt(1) === input.charAt(2)) {
-        alert("This is not a word.");
-    }
-    else if (input.length == wordLength) {
-        alert("Nice try, but that is not the secret word.");
-    }
-    else if (input.length >= wordLength) {
-        alert("That word is too long.")
-    }
-    else if (input.length >= 3 && input.length !== wordLength) {
-        alert("That word is too short.")
-    }
-    else if (input.length >= 2) {
-        alert("Only one letter or a word.");
-    }
-    else {
+    } else if (input == '') {
+        document.getElementById("gameStatus").innerHTML = "Er is niks getypt.";
+    } else if (isLetter(input) == false) {
+        document.getElementById("gameStatus").innerHTML = "Alleen letters uit het alfabet.";
+    } else if (input.charAt(0) === input.charAt(1) && input.charAt(1) === input.charAt(2)) {
+        document.getElementById("gameStatus").innerHTML = "Dit is geen woord.";
+    } else if (input.length == wordLength) {
+        document.getElementById("gameStatus").innerHTML = "Goed geprobeerd maar dat is niet het woord.";
+    } else if (input.length >= wordLength) {
+        document.getElementById("gameStatus").innerHTML = "Dat woord is te lang.";
+    } else if (input.length >= 3 && input.length !== wordLength) {
+        document.getElementById("gameStatus").innerHTML = "Dat woord is te kort.";
+    } else if (input.length >= 2) {
+        document.getElementById("gameStatus").innerHTML = "Typ alleen 1 letter of raad gelijk het woord.";
+    } else {
         usedLettersArray();
+        letterInputOnScreen()
     }
     document.getElementById("inputHangman").value = ''; //Maak tekstvak leeg na input.
     letterInputOnScreen()
@@ -92,5 +83,5 @@ function usedLettersArray() {
 }
 
 function restartGame() {
-    document.getElementById("restartGame").innerHTML = "Je hebt gewonnen. Klik op genereer woord om opnieuw te starten !";
+    console.log("Empty All")
 }
