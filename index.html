@@ -7,17 +7,17 @@
         <link rel="stylesheet" href="galgje.css">
         <script src="galgje.js" /></script>
     </head>
-        <h1>Galgje</h1>
+        <h1 class="text">Galgje</h1>
                 
-        <div><h4>Gebruikte letters: </h4><section id="usedLetterDisplay"></section></div>
-        <div><h4>Testwoord: </h4><section id="secretWord"></section></div>
-        <div><h4>Te raden woord: </h4><section id="wordDisplay"></section></div>
+        <div><section id="usedLetterDisplay"></section></div>
+        <div><section class="text" id="secretWord"></section></div>
+        <div><section class="text" id="wordDisplay"></section></div>
         <div><section id="gameStatus"></section></div>
         <br>
-        <div><input id="inputHangman" type="input" autocomplete="off" placeholder="Guess a letter or the full word." size="21">
+        <div><input class="input" id="inputHangman" type="input" autocomplete="off" placeholder="Guess a letter or the full word.">
         <br>
-        <button onclick="gameInput()">Guess</button></div>
+        <button class="button" onclick="gameInput()" role="button" id="gameInput">Raden</button></div>
         <br>
-        <div><button onclick="wordFetch()">Maak een nieuw woord !</button></div>
+        <div><button class="button" onclick="wordFetch()">Maak een nieuw woord</button></div>
     </body>
 </html>
