@@ -1,5 +1,10 @@
+/* * {
+    border-color: aliceblue;
+    border: 1px solid #fdfdfe
+} */
+
 body {
-    margin: 50px;
+    margin: 0px;
 	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
 	animation: gradient 60s ease infinite;
@@ -33,15 +38,24 @@ div {
 }
 
 .text {
-    font-size: 80px;
+    font-size: 60px;
     font-weight: 600;
     color: #fdfdfe;
     text-shadow: 0px 0px 5px #b393d3, 0px 0px 10px #b393d3, 0px 0px 10px #b393d3,
     0px 0px 20px #b393d3;
 }
 
+.size {
+    height: 50px;
+}
+
+#wordDisplay {
+    height: 70px;
+    margin-bottom: 50px;
+}
+
 #secretWord {
-    font-size: 60px;
+    font-size: 20px;
     font-weight: 200;
 }
 
@@ -59,86 +73,41 @@ div {
 	appearance: none;
 	border: none;
 	outline: none;
-    border-top: .4em solid rgb(255, 255, 255);
-	border-bottom: .4em solid rgb(255, 255, 255);
+    border-top: .1em solid rgb(255, 255, 255);
+	border-bottom: .1em solid rgb(255, 255, 255);
 	background: hsl(0 0 0/0);
 	border-radius: .4em;
-	padding: .4em;
+	padding: .5em .5em;
 	color: #ffffff;
-    width: 200px;
+    width: 300px;
     text-align: center;
+    &:focus {
+		border-top: .1em solid rgb(100, 101, 136);
+	    border-bottom: .1em solid rgb(100, 101, 136);
+	}
 }
+
+.input::placeholder {
+    color: white;
+    opacity: 1; /* Firefox */
+} 
 
 .button {
 	appearance: none;
 	font-size: 15px;
     font-weight: 200;
-    border: .2em solid #ffffff;
+    border: none;
+    border-top: .3em solid rgb(255, 255, 255);
+	border-bottom: .3em solid rgb(255, 255, 255);
 	background: hsl(0 0 0/0);
 	padding: .85em 1.5em;
 	color: #ffffff;
-	border-radius: 2em;
+	border-radius: 1em;
 	transition: 0.5s;
-	&:hover, &:focus, &:active {
-		color: yellowgreen;
-        border: .2em solid yellowgreen;
+	&:hover {
+		color: rgb(255, 255, 255);
+	    border-bottom: .3em solid rgb(100, 101, 136);;
+        border-top: .3em solid rgb(100, 101, 136);
+	    border-bottom: .3em solid rgb(100, 101, 136);
 	}
 }
-
-/* .button {
-    background-color: initial;
-    background-image: linear-gradient(-180deg, #318aff, #2503e6);
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: block;
-    font-family: Inter,-apple-system,system-ui,Roboto,"Helvetica Neue",Arial,sans-serif;
-    height: 46px;
-    line-height: 40px;
-    outline: 0;
-    overflow: hidden;
-    padding: 0 20px;
-    pointer-events: auto;
-    position: relative;
-    text-align: center;
-    touch-action: manipulation;
-    user-select: none;
-    -webkit-user-select: none;
-    vertical-align: top;
-    white-space: nowrap;
-    width: 15%;
-    z-index: 9;
-    border: 0;
-    transition: box-shadow .2s;
-}
-
-.button:hover {
-  box-shadow: rgba(253, 76, 0, 0.5) 0 5px 10px;
-} */
-
-
-/* .input {
-    font-size: 14px;
-    border-radius: 6px;
-    box-shadow: rgba(0, 0, 0, 0.1) 0 2px 4px;
-    line-height: 1.5;
-    padding: 5px 10px;
-    transition: box-shadow 100ms ease-in, border 100ms ease-in, background-color 100ms ease-in;
-    border: 2px solid #dee1e2;
-    color: rgb(14, 14, 16);
-    background: #dee1e2;
-    display: block;
-    height: 36px;
-    width: 20%;
-    text-align: center;
-
-}
-.input:focus {
-    border-color: #9147ff;
-    background: #fff;
-}
-.input:hover {
-    border-color: #ccc;
-    box-shadow: rgba(253, 76, 0, 0.5) 0 5px 10px;
-} */
