@@ -1,4 +1,4 @@
-const hangmanStages = [
+const hangmanImagesStages = [
     `
      ________
      |
@@ -123,6 +123,7 @@ function letterInputOnScreen() {
 function gameInput() {
     let wordLength = wordToGuess.length;
     input = document.getElementById("inputHangman").value;
+    document.getElementById("gameStatus").innerHTML = ''; // ??? WAAROM WERKT DEZE HIER WEL EN NIET VLAK ERBOVEN ???
     if (usedLetters.includes(input)) {
         document.getElementById("gameStatus").innerHTML = "Deze letter is al gebruikt.";
     } else if (input == wordToGuess) {
@@ -155,9 +156,8 @@ function isLetter(input) {
 }
 
 function usedLettersArray() {
-    let addLetters = usedLetters.unshift(input);
-    console.log(usedLetters);
-    document.getElementById("usedLetterDisplay").innerHTML = usedLetters;
+    let addLetters = usedLetters.push(input);
+    `document.getElementById("usedLetterDisplay").innerHTML = ${usedLetters.join}`;
 }
 
 function restartGame() {

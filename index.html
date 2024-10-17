@@ -8,16 +8,14 @@
         <script src="galgje.js" /></script>
     </head>
         <h1 class="text">Galgje</h1>
-                
-        <div><section id="usedLetterDisplay"></section></div>
-        <div><section class="text" id="secretWord"></section></div>
-        <div><section class="text" id="wordDisplay"></section></div>
-        <div><section id="gameStatus"></section></div>
+        <div><button class="button shadow" onclick="wordFetch()">Maak een nieuw woord</button></div>
+        <div class="size"><section class="text" id="secretWord"></section></div>
+        <div><img src="images/Stage0.png" alt=""></div>
+        <div class="size"><section class="text" id="usedLetterDisplay">.</section></div>
+        <div class="size"><section class="text" id="wordDisplay">.</section></div>
+        <div class="size"><section class="text" id="gameStatus">.</section></div>
+        <div><input class="input shadow" id="inputHangman" type="input" autocomplete="off" placeholder="Kies een letter of raad direct het woord.">
         <br>
-        <div><input class="input" id="inputHangman" type="input" autocomplete="off" placeholder="Guess a letter or the full word.">
-        <br>
-        <button class="button" onclick="gameInput()" role="button" id="gameInput">Raden</button></div>
-        <br>
-        <div><button class="button" onclick="wordFetch()">Maak een nieuw woord</button></div>
+        <div><button class="button shadow" onclick="gameInput()" role="button" id="gameInput">Raden</button></div>
     </body>
 </html>
