@@ -1,3 +1,81 @@
+const hangmanStages = [
+    `
+     ________
+     |
+     |
+     |
+     |
+    /|\\
+    `,
+    `
+     ________
+     |      |
+     |
+     |
+     |
+    /|\\
+    `,
+    `
+     ________
+     |      |
+     |     😟
+     |
+     |
+    /|\\
+    `,
+    `
+     ________
+     |      |
+     |     😮
+     |      |
+     |
+    /|\\
+    `,
+    `
+     ________
+     |      |
+     |     😲
+     |     /|
+     |
+    /|\\
+    `,
+    `
+     ________
+     |      |
+     |     😨
+     |     /|\\
+     |
+    /|\\
+    `,
+    `
+     ________
+     |      |
+     |     😱
+     |     /|\\
+     |     /
+    /|\\
+    `,
+    `
+     ________
+     |      |
+     |     💀
+     |     /|\\
+     |     / \\
+    /|\\
+    `
+];
+
+const hangmanWin = [
+    `
+     ________
+     |
+     |     
+     |   \\😃/
+     |      |
+    /|\\    / \\
+    `
+];
+
 // global variables
 let usedLetters = [];
 let wordToGuess;
@@ -10,12 +88,12 @@ function wordFetch() {
         .catch(error => console.error('Error loading word list:', error));
 }
 
-function getRandomWord(woordlijst) { // ??? Werkt dit zo dat je bij de .then.... getRandomWord(data) hem hier gewoon woordlijst noemt/defined ???).
+function getRandomWord(woordlijst) {
     const wordList = woordlijst.split('\n').map(word => word.trim());
     let randomWord = wordList[Math.floor(Math.random() * wordList.length)];
     document.getElementById("secretWord").innerHTML = randomWord;
     wordToGuess = randomWord;
-    lettersGuessed = new Int32Array(wordToGuess.length);    //A Typed Array (not an actual Array) for storing binary data in memory.
+    lettersGuessed = new Int32Array(wordToGuess.length);
     emptyWordDisplay();
 }
 

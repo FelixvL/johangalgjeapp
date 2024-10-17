@@ -1,16 +1,5 @@
 # Engelse comments waren meer voor mij zelf. Nederlandse later toegevoegd.
 
-import random
- 
-def word_gen():                                                                 # Voor mijzelf logischere naam gegeven.
-    word_list = []
-    filepath = "D://Hacklab Python//Woordlijst.txt"                             # Double slash 'escape' toegevoegd vanwege foutmelding op een gegeven moment. Zou hetzelfde moeten doen als jouw 'r' begreep ik.
-    with open(filepath, "r") as words:
-        for line in words:
-            word_list.append(line.strip())
-    return random.choice(word_list)
-
-# Spreekt voor zich. Ik vond het wel interessant om de smilies toe te voegen.
 hangman_stages = [
     """|"""
 ]
@@ -31,19 +20,12 @@ def global_init():
     word_display = list(letter_blanks) 
     total_moves = 0                                     
 
-global_init()
-
-print(game_word)                ########## Deze is alleen om te testen maar wel handig om voor jou ook te laten staan!  ##########
-
-print(" - Welkom bij dit galgje spel. Het verborgen woord is al random gekozen. - \n - Surcces! -\n")
 
 def top_game_display():                                                             # Display for HangmAnimation, Word progress, Used letters and Tries remaining.
     print(hangman_stages[7 - letter_guesses])
     print(f"   {' '.join(word_display)}\n")                                         # Display current state of the word.
     print(f" - Reeds gebruikte: [ {', '.join(sorted(letters_used))} ] ")            # Display used letters.
     print(f" - Overige pogingen: [ {letter_guesses} ]\n")                           # Display remaining guesses.
-
-top_game_display()
 
 def restart_game():
     restart = input("Wil je het spel opnieuw starten met een nieuw woord? J/N: ").upper()
