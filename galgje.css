@@ -82,8 +82,9 @@ div {
     width: 300px;
     text-align: center;
     &:focus {
-		border-top: .1em solid rgb(100, 101, 136);
-	    border-bottom: .1em solid rgb(100, 101, 136);
+		border-top: .2em solid rgb(100, 101, 136);
+	    border-bottom: .2em solid rgb(100, 101, 136);
+		padding: .8em .8em;
 	}
 }
 
@@ -100,7 +101,7 @@ div {
     border-top: .3em solid rgb(255, 255, 255);
 	border-bottom: .3em solid rgb(255, 255, 255);
 	background: hsl(0 0 0/0);
-	padding: .85em 1.5em;
+	padding: .75em 1em;
 	color: #ffffff;
 	border-radius: 1em;
 	transition: 0.5s;
@@ -109,5 +110,53 @@ div {
 	    border-bottom: .3em solid rgb(100, 101, 136);;
         border-top: .3em solid rgb(100, 101, 136);
 	    border-bottom: .3em solid rgb(100, 101, 136);
+		padding: .85em 1.5em;
 	}
+}
+
+.keyboard-wrapper {
+	display: flex;
+}
+
+.keyboard-top {
+	display: flex;
+	flex-direction: row;
+}
+
+.keyboard-middle {
+	display: flex;
+	flex-direction: row;
+}
+
+.keyboard-bottom {
+	display: flex;
+	flex-direction: row;
+}
+
+.keyboard-button {
+	appearance: none;
+	font-size: 20px;
+    font-weight: 200;
+    border: none;
+    border-top: .2em solid rgb(255, 255, 255);
+	border-bottom: .2em solid rgb(255, 255, 255);
+	background: hsl(0 0 0/0);
+	padding: .75em 1em;
+	margin: .2em;
+	width: 3em;
+	text-align: center;
+	color: #ffffff;
+	border-radius: 0.75em;
+	transition: 0.5s;
+	&:hover {
+		color: rgb(255, 255, 255);
+	    border-bottom: .25em solid rgb(100, 101, 136);;
+        border-top: .25em solid rgb(100, 101, 136);
+	    border-bottom: .25em solid rgb(100, 101, 136);
+		padding: .70em 1em;
+	}
+}
+
+.keyboard-placeholder {
+	visibility: hidden;
 }

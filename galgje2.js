@@ -80,7 +80,6 @@ const hangmanWin = [
 
 // global variables
 let usedLetters = [];
-console.log(usedLetters);
 let wordToGuess;
 let lettersCorrect;
 let tries = 0;
@@ -152,7 +151,6 @@ function gameInput() {
     } else {
         usedLettersArray();
         letterInputOnScreen()
-        console.log(usedLetters);
     }
     document.getElementById("inputHangman").value = ''; //Maak tekstvak leeg na input.
 }
@@ -164,7 +162,8 @@ function gameOver() {
     + 1; i++;
 }
 
-function checkEnterPress(e) {
+
+function checkKeyPress(e) {
     console.log("Yes", e.keyCode)
     if (e.keyCode == 13) {
         gameInput();
@@ -176,75 +175,10 @@ function isLetter(input) {
 }
 
 function usedLettersArray() {
-    console.log(usedLetters);
-    let addLetters = usedLetters.push(input); // IS NOT AN ARRAY? IT COUNTS
-    console.log(usedLetters);
-    console.log(addLetters);
-    // let stringArray = addLetters.join(" ");
-    // console.log(stringArray);
-    document.getElementById("usedLetterDisplay").innerHTML = usedLetters; // WHY DOES USEDLETTERS WORK HERE?
-    // `document.getElementById("usedLetterDisplay").innerHTML = ${usedLetters.join} `;
+    let addLetters = usedLetters.push(input);
+    `document.getElementById("usedLetterDisplay").innerHTML = ${usedLetters.join} `;
 }
 
 function restartGame() {
     console.log("Empty All")
-}
-
-function checkKeyPress(e) {
-    console.log("Yes", e.keyCode)
-    if (e.keyCode == 81) {
-        gameInput();
-    } else if (e.keyCode == 87) {
-        gameInput();
-    } else if (e.keyCode == 69) {
-        gameInput();
-    } else if (e.keyCode == 82) {
-        gameInput();
-    } else if (e.keyCode == 84) {
-        gameInput();
-    } else if (e.keyCode == 89) {
-        gameInput();
-    } else if (e.keyCode == 85) {
-        gameInput();
-    } else if (e.keyCode == 73) {
-        gameInput();
-    } else if (e.keyCode == 79) {
-        gameInput();
-    } else if (e.keyCode == 80) {
-        gameInput();
-    } else if (e.keyCode == 65) {
-        gameInput();
-    } else if (e.keyCode == 83) {
-        gameInput();
-    } else if (e.keyCode == 68) {
-        gameInput();
-    } else if (e.keyCode == 70) {
-        gameInput();
-    } else if (e.keyCode == 71) {
-        gameInput();
-    } else if (e.keyCode == 72) {
-        gameInput();
-    } else if (e.keyCode == 74) {
-        gameInput();
-    } else if (e.keyCode == 75) {
-        gameInput();
-    } else if (e.keyCode == 76) {
-        gameInput();
-    } else if (e.keyCode == 90) {
-        gameInput();
-    } else if (e.keyCode == 88) {
-        gameInput();
-    } else if (e.keyCode == 67) {
-        gameInput();
-    } else if (e.keyCode == 86) {
-        gameInput();
-    } else if (e.keyCode == 66) {
-        gameInput();
-    } else if (e.keyCode == 78) {
-        gameInput();
-    } else if (e.keyCode == 77) {
-        gameInput();
-    } else {
-        (console.log("Virtual Keyboard Error"))
-    }
 }
