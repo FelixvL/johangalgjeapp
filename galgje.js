@@ -118,61 +118,76 @@ function checkEnterPress(e) {
     }
 }
 
-function checkKeyPress(e) {
-    console.log("Yes", e.keyCode)
-    if (e.keyCode == 81) {
-        gameInput();
-    } else if (e.keyCode == 87) {
-        gameInput();
-    } else if (e.keyCode == 69) {
-        gameInput();
-    } else if (e.keyCode == 82) {
-        gameInput();
-    } else if (e.keyCode == 84) {
-        gameInput();
-    } else if (e.keyCode == 89) {
-        gameInput();
-    } else if (e.keyCode == 85) {
-        gameInput();
-    } else if (e.keyCode == 73) {
-        gameInput();
-    } else if (e.keyCode == 79) {
-        gameInput();
-    } else if (e.keyCode == 80) {
-        gameInput();
-    } else if (e.keyCode == 65) {
-        gameInput();
-    } else if (e.keyCode == 83) {
-        gameInput();
-    } else if (e.keyCode == 68) {
-        gameInput();
-    } else if (e.keyCode == 70) {
-        gameInput();
-    } else if (e.keyCode == 71) {
-        gameInput();
-    } else if (e.keyCode == 72) {
-        gameInput();
-    } else if (e.keyCode == 74) {
-        gameInput();
-    } else if (e.keyCode == 75) {
-        gameInput();
-    } else if (e.keyCode == 76) {
-        gameInput();
-    } else if (e.keyCode == 90) {
-        gameInput();
-    } else if (e.keyCode == 88) {
-        gameInput();
-    } else if (e.keyCode == 67) {
-        gameInput();
-    } else if (e.keyCode == 86) {
-        gameInput();
-    } else if (e.keyCode == 66) {
-        gameInput();
-    } else if (e.keyCode == 78) {
-        gameInput();
-    } else if (e.keyCode == 77) {
-        gameInput();
-    } else {
-        (console.log("Virtual Keyboard Error"))
-    }
+function handleButtonClick(letter) {
+    const inputField = document.getElementById("inputHangman");
+    inputField.value = letter; // Set the input value to the clicked letter
+    gameInput(); // Call the game input function
 }
+
+// Optional: Adding keyboard event listeners for real keyboard presses
+document.addEventListener('keydown', function (e) {
+    if (e.key.length === 1 && /^[a-zA-Z]$/.test(e.key)) { // Check if it's a single letter
+        const inputField = document.getElementById("inputHangman");
+        inputField.value = e.key.toUpperCase(); // Set the input value to the pressed key
+        gameInput(); // Call the game input function
+    }
+});
+
+// function checkKeyPress(e) {
+//     console.log("Yes", e.keyCode)
+//     if (e.keyCode == 81) {
+//         gameInput();
+//     } else if (e.keyCode == 87) {
+//         gameInput();
+//     } else if (e.keyCode == 69) {
+//         gameInput();
+//     } else if (e.keyCode == 82) {
+//         gameInput();
+//     } else if (e.keyCode == 84) {
+//         gameInput();
+//     } else if (e.keyCode == 89) {
+//         gameInput();
+//     } else if (e.keyCode == 85) {
+//         gameInput();
+//     } else if (e.keyCode == 73) {
+//         gameInput();
+//     } else if (e.keyCode == 79) {
+//         gameInput();
+//     } else if (e.keyCode == 80) {
+//         gameInput();
+//     } else if (e.keyCode == 65) {
+//         gameInput();
+//     } else if (e.keyCode == 83) {
+//         gameInput();
+//     } else if (e.keyCode == 68) {
+//         gameInput();
+//     } else if (e.keyCode == 70) {
+//         gameInput();
+//     } else if (e.keyCode == 71) {
+//         gameInput();
+//     } else if (e.keyCode == 72) {
+//         gameInput();
+//     } else if (e.keyCode == 74) {
+//         gameInput();
+//     } else if (e.keyCode == 75) {
+//         gameInput();
+//     } else if (e.keyCode == 76) {
+//         gameInput();
+//     } else if (e.keyCode == 90) {
+//         gameInput();
+//     } else if (e.keyCode == 88) {
+//         gameInput();
+//     } else if (e.keyCode == 67) {
+//         gameInput();
+//     } else if (e.keyCode == 86) {
+//         gameInput();
+//     } else if (e.keyCode == 66) {
+//         gameInput();
+//     } else if (e.keyCode == 78) {
+//         gameInput();
+//     } else if (e.keyCode == 77) {
+//         gameInput();
+//     } else {
+//         (console.log("Virtual Keyboard Error"))
+//     }
+// }
