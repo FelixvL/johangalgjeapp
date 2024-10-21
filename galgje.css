@@ -28,6 +28,8 @@ h1 {
     justify-content: center;
     align-items: center;
     text-decoration: underline;
+	margin-top: 15px;
+	margin-bottom: 0px;
 }
 
 div {
@@ -45,18 +47,23 @@ div {
     0px 0px 20px #b393d3;
 }
 
-.size {
-    height: 50px;
+.size-1 {
+	height: 40px;
+	margin-bottom: 20px;
 }
 
-#wordDisplay {
-    height: 70px;
-    margin-bottom: 50px;
+.size-2 {
+    height: 75px;
 }
 
-#secretWord {
-    font-size: 20px;
-    font-weight: 200;
+.gallow-wrapper {
+	display: flex;
+}
+
+.gallow-image {
+	display: flex;
+	margin: 0px;
+	padding: 0px;
 }
 
 #usedLetterDisplay {
@@ -64,8 +71,17 @@ div {
     font-weight: 200;
 }
 
+#wordDisplay {
+    height: 50px;
+}
+
 #gameStatus {
     font-size: 40px;
+    font-weight: 200;
+}
+
+#secretWord {
+    font-size: 20px;
     font-weight: 200;
 }
 

@@ -1,89 +1,11 @@
 window.onload = wordFetch();
 
-const hangmanImagesStages = [
-    `
-     ________
-     |
-     |
-     |
-     |
-    /|\\
-    `,
-    `
-     ________
-     |      |
-     |
-     |
-     |
-    /|\\
-    `,
-    `
-     ________
-     |      |
-     |     😟
-     |
-     |
-    /|\\
-    `,
-    `
-     ________
-     |      |
-     |     😮
-     |      |
-     |
-    /|\\
-    `,
-    `
-     ________
-     |      |
-     |     😲
-     |     /|
-     |
-    /|\\
-    `,
-    `
-     ________
-     |      |
-     |     😨
-     |     /|\\
-     |
-    /|\\
-    `,
-    `
-     ________
-     |      |
-     |     😱
-     |     /|\\
-     |     /
-    /|\\
-    `,
-    `
-     ________
-     |      |
-     |     💀
-     |     /|\\
-     |     / \\
-    /|\\
-    `
-];
-
-const hangmanWin = [
-    `
-     ________
-     |
-     |     
-     |   \\😃/
-     |      |
-    /|\\    / \\
-    `
-];
-
 // global variables
 let usedLetters = [];
-console.log(usedLetters);
 let wordToGuess;
-let lettersCorrect;
-let tries = 0;
+let lettersGuessed;
+let maxAttempts = 7;
+let wrongGuesses = 0;
 
 function wordFetch() {
     fetch("Woordlijst.txt")
@@ -95,7 +17,7 @@ function wordFetch() {
 function getRandomWord(woordlijst) {
     const wordList = woordlijst.split('\n').map(word => word.trim());
     let randomWord = wordList[Math.floor(Math.random() * wordList.length)];
-    document.getElementById("secretWord").innerHTML = randomWord;
+    document.getElementById("secretWord").innerHTML = randomWord; // Alleen om te testen
     wordToGuess = randomWord;
     lettersGuessed = new Int32Array(wordToGuess.length);
     emptyWordDisplay();
@@ -114,80 +36,86 @@ function emptyWordDisplay() {
 }
 
 function letterInputOnScreen() {
-    let letterInput = document.getElementById("inputHangman").value;
+    let letterInput = document.getElementById("inputHangman").value.toLowerCase();
+    let correctGuess = false;
+
     for (let x = 0; x < wordToGuess.length; x++) {
         if (wordToGuess[x] == letterInput) {
             lettersGuessed[x] = 1;
+            correctGuess = true;
         }
     }
-    emptyWordDisplay();
+
+    if (!correctGuess) {
+        wrongGuesses++;
+        updateHangmanImage();
+
+        if (wrongGuesses >= maxAttempts) {
+            document.getElementById("gameStatus").innerHTML = `Game Over! Het woord was "${wordToGuess}".`;
+            document.getElementById("inputHangman").disabled = true;  // Disable further input
+            return;
+        } else {
+            document.getElementById("gameStatus").innerHTML = `Onjuist! Je hebt nog ${maxAttempts - wrongGuesses} pogingen over.`;
+        }
+    } else {
+        emptyWordDisplay();
+    }
+
+
+    if (!document.getElementById("wordDisplay").innerHTML.includes("_")) {
+        document.getElementById("gameStatus").innerHTML = "Gefeliciteerd! Je hebt het woord geraden.";
+        document.getElementById("inputHangman").disabled = true;
+    }
+
     document.getElementById("inputHangman").value = "";
 }
 
+function updateHangmanImage() {
+    const hangmanImage = document.getElementById("imageStages");
+    hangmanImage.src = `images/Stage${Math.min(wrongGuesses, maxAttempts)}.png`;
+}
+
 function gameInput() {
-    let wordLength = wordToGuess.length;
-    input = document.getElementById("inputHangman").value;
-    document.getElementById("gameStatus").innerHTML = ''; // ??? WAAROM WERKT DEZE HIER WEL EN NIET VLAK ERBOVEN ???
-    if (usedLetters.includes(input)) {
+    let input = document.getElementById("inputHangman").value.toLowerCase();
+    document.getElementById("gameStatus").innerHTML = '';
+
+    if (input === '') {
+        document.getElementById("gameStatus").innerHTML = "Er is niks getypt.";
+    } else if (usedLetters.includes(input)) {
         document.getElementById("gameStatus").innerHTML = "Deze letter is al gebruikt.";
-    } else if (input == wordToGuess) {
+    } else if (input === wordToGuess) {
         document.getElementById("gameStatus").innerHTML = "Gefeliciteerd, je hebt gewonnen door het woord te raden!";
         restartGame();
-    } else if (input == '') {
-        document.getElementById("gameStatus").innerHTML = "Er is niks getypt.";
-    } else if (isLetter(input) == false) {
-        document.getElementById("gameStatus").innerHTML = "Alleen letters uit het alfabet.";
-    } else if (input.charAt(0) === input.charAt(1) && input.charAt(1) === input.charAt(2)) {
-        document.getElementById("gameStatus").innerHTML = "Dit is geen woord.";
-    } else if (input.length == wordLength) {
-        document.getElementById("gameStatus").innerHTML = "Goed geprobeerd maar dat is niet het woord.";
-    } else if (input.length >= wordLength) {
-        document.getElementById("gameStatus").innerHTML = "Dat woord is te lang.";
-    } else if (input.length >= 3 && input.length !== wordLength) {
+    } else if (input.length === 1) {
+        usedLetters.push(input);
+        letterInputOnScreen();
+    } else if (input.length === wordToGuess.length) {
+
+        wrongGuesses++;
+        updateHangmanImage();
+        document.getElementById("gameStatus").innerHTML = `Fout woord! Je hebt nog ${maxAttempts - wrongGuesses} pogingen.`;
+    } else if (input.length < wordToGuess.length) {
         document.getElementById("gameStatus").innerHTML = "Dat woord is te kort.";
-    } else if (input.length <= wordLength && input.length >= 2) {
-        document.getElementById("gameStatus").innerHTML = "Typ alleen 1 letter of raad gelijk het woord."
-        // } else if {
-        //     document.getElementById("gameStatus").innerHTML = "Juist."
     } else {
-        usedLettersArray();
-        letterInputOnScreen()
-        console.log(usedLetters);
+        document.getElementById("gameStatus").innerHTML = "Dat woord is te lang.";
     }
-    document.getElementById("inputHangman").value = ''; //Maak tekstvak leeg na input.
-}
 
-function gameOver() {
-    while (i > tries) {
-        `text = + ${"Je hebt nog" + i + "pogingen"} `;
-    }
-    + 1; i++;
-}
-
-function checkEnterPress(e) {
-    console.log("Yes", e.keyCode)
-    if (e.keyCode == 13) {
-        gameInput();
-    }
+    document.getElementById("inputHangman").value = '';
 }
 
 function isLetter(input) {
     return input.toLowerCase() != input.toUpperCase();
 }
 
-function usedLettersArray() {
-    console.log(usedLetters);
-    let addLetters = usedLetters.push(input); // IS NOT AN ARRAY? IT COUNTS
-    console.log(usedLetters);
-    console.log(addLetters);
-    // let stringArray = addLetters.join(" ");
-    // console.log(stringArray);
-    document.getElementById("usedLetterDisplay").innerHTML = usedLetters; // WHY DOES USEDLETTERS WORK HERE?
-    // `document.getElementById("usedLetterDisplay").innerHTML = ${usedLetters.join} `;
+function restartGame() {
+    console.log("Spel Herstarten...");
+    // Additional logic for restarting the game can go here.
 }
 
-function restartGame() {
-    console.log("Empty All")
+function checkEnterPress(e) {
+    if (e.keyCode == 13) {
+        gameInput();
+    }
 }
 
 function checkKeyPress(e) {
