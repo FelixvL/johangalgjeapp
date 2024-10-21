@@ -9,15 +9,16 @@
     </head>
         <h1 class="text">Galgje</h1>
         <!-- <div><button class="button shadow" onclick="wordFetch()">Kies een nieuw woord</button></div> -->
-        <div><img src="images/Stage1.png" alt=""></div>
-        <div class="size"><section class="text" id="usedLetterDisplay">.</section></div>
-        <div class="size"><section class="text" id="wordDisplay">.</section></div>
-        <div class="size"><section class="text" id="gameStatus">.</section></div>
-        <div><input class="input shadow" id="inputHangman" type="input" onkeyup="checkEnterPress(event)" autocomplete="off" placeholder="Kies een letter of raad direct het woord.">
-        <br>
-        <div><button class="button shadow" onclick="gameInput()" role="button" id="gameInput">Raden</button></div>
-        <div class="size"><section class="text" id="secretWord"></section></div>
-    
+        <div class="gallow-wrapper">
+            <div class="gallow-image" id="gallow"><img id="imageStages" src="images/Stage1.png" alt=""></div>
+            <div class="size-1"><section class="text" id="usedLetterDisplay">.</section></div>
+            <div class="size-1"><section class="text" id="wordDisplay">.</section></div>
+            <div class="size-2"><section class="text" id="gameStatus">.</section></div>
+            <div><input class="input shadow" id="inputHangman" type="input" onkeyup="checkEnterPress(event)" autocomplete="off" placeholder="Kies een letter of raad direct het woord.">
+            <br>
+            <div><button class="button shadow" onclick="gameInput()" type="button" id="gameInput">Raden</button></div>
+            <div class="size"><section class="text" id="secretWord"></section></div>
+        </div>
         <div class="keyboard-wrapper">    
             <div class="keyboard-top">
                 <div><button class="keyboard-button" id="Q">Q</button></div>
